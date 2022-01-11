@@ -13,5 +13,4 @@ use App\Http\Controllers\RegisterInterestController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::resource('register',RegisterInterestController::class);

@@ -1,21 +1,55 @@
+import axios from 'axios';
 import React, {useState} from 'react'
 import { Button,Modal } from 'react-bootstrap'
+import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
 import api from '../../../api';
 import './Register.css';
 
 class Register extends React.Component {
     constructor(){
         super();
-        this.addFormData = this.addFormData.bind(this);
+        // this.addFormData = this.addFormData.bind(this);
         this.state = {
-            showHide : false
+            showHide : false,
+            name: '',
+            email: '',
+            callback: '',
+            mobile: '',
         }
     }
-    // const [loading, setLoading] = useState(false);
-    // const [title, setTitle] = useState('')
-    // const onAddSubmit = async() => {
+    
+//   state = {
+//       name: '',
+//       email: '',
+//       callback: '',
+//       mobile: '',
+//   }
 
-    // }
+  handleInput = (e) => {
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+  }
+  saveRegister = async (e) => {
+      e.preventDefault();
+      console.log(this.state.recieve_callback);
+
+      try{
+          let result = await axios.post("http://localhost:8000/api/register", 
+          {
+            name: this.state.name,
+            email: this.state.email,
+            recieve_callback: 0,
+            mobile: this.state.mobile,
+          });
+        //   console.log(result.response.data);
+        alert("success");
+      }
+      catch(error){
+          console.error(error.response.data);
+      }
+     
+  }
     handleModalShowHide() {
         this.setState({ showHide: !this.state.showHide })
     }
@@ -33,30 +67,33 @@ class Register extends React.Component {
                     </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                    <form  ref={(el) => this.myFormRef = el}>
+                    <form onSubmit = {this.saveRegister}>
                             <div className='form-group'>
                                 <label htmlFor='name'>Name:</label>
-                                <input type='text' name='name' id='name' />
+                                <input type='text' onChange={this.handleInput} value={this.state.name} name='name' id='name' />
                             </div>
 
                             <div className='form-group'>
                                 <label htmlFor='email'>Email:</label>
-                                <input type='email' name='email' id='email' />
+                                <input type='email' onChange={this.handleInput} value={this.state.email} name='email' id='email' />
                             </div>
 
                             <div className='form-group'>
                                 <label htmlFor='callback'>Would you like to receive a callback about this?</label>
                                 <div className='option'>
-                                    <input type='radio' name='callback' id='callback' defaultChecked={true} />Yes
+                                    <input type='radio' name='recieve_callback' onChange={this.handleInput} value={this.state.recieve_callback} id='callback' defaultChecked={true} />Yes
                                 </div>
                                 <div className='option'>
-                                    <input type='radio' name='callback' id='callback' />No
+                                    <input type='radio' name='recieve_callback' onChange={this.handleInput} value={this.state.recieve_callback} id='callback' />No
                                 </div>
                             </div>
 
                             <div className='form-group'>
                                 <label htmlFor='mobile'>Mobile:</label>
-                                <input type='number' name='mobile' id='mobile' />
+                                <input type='number' name='mobile' onChange={this.handleInput} value={this.state.mobile} id='mobile' />
+                            </div>
+                            <div className='form-group'>
+                                <button type="submit" className="btn btn-primary">Save</button>
                             </div>
                         </form>
 
