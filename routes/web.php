@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 // Route::post('/store', 'RegisterInterestController@store')->name('register.interest');
+
+Auth::routes();
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::get('/superadmin', [HomeController::class, 'superadminHome'])->name('superadmin')->middleware('superadmin');
+
