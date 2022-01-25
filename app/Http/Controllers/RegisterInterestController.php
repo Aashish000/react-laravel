@@ -18,6 +18,12 @@ class RegisterInterestController extends Controller
         return RegisterResource::collection(RegisterInterest::all());
     }
 
+    public function show()
+    {
+        $register = RegisterInterest::all();
+        return view('admin.register-interest')->with('register',$register);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -54,10 +60,6 @@ class RegisterInterestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

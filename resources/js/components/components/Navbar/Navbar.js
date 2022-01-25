@@ -79,6 +79,14 @@ class Navbar extends React.Component {
                             >
                                 Register your interest
                             </NavLink>
+                            <NavLink
+                                className='nav-link'
+                                activeClassName='is-active'
+                                aria-current="page"
+                                to='/login'
+                            >
+                                Login
+                            </NavLink>
                         </div>
                     </div>
                 </div>

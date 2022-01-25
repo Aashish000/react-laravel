@@ -20,9 +20,7 @@ class Admin
             return redirect()->route('login');
         }
 
-        if (Auth::user()->role == 'superadmin') {
-            return redirect()->route('superadmin');
-        }
+    
 
         if (Auth::user()->role == 'admin') {
             return redirect()->route('admin');

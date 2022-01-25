@@ -4,6 +4,7 @@ import React from 'react';
 import Navbar from '../Navbar/Navbar';
 import Home from '../Home/Home';
 import Quiz from '../Quiz/Quiz';
+import Login from '../Login/login';
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
             <Route path='/quiz'>
               <Quiz />
             </Route>
-
+            <Route path='/login'>
+              <Login />
+            </Route>
             <Route exact path='/'>
               <Home />
             </Route>

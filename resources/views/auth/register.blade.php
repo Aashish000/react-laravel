@@ -60,7 +60,13 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
+                        <div class="form-group">
+                    <label for="role">Role</label>
+                    <input type="text" class="form-control" id="role" placeholder="Enter role" name="role">
+                  </div>
+                  <div class="is_admin">
+                    <label><input type="checkbox" name="is_admin" value="1">Is Admin</label>
+                </div>
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

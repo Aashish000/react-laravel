@@ -99,12 +99,12 @@ class Register extends React.Component {
 
                     </Modal.Body>
                     <Modal.Footer>
-                    <Button variant="secondary" onClick={() => this.handleModalShowHide()}>
+                    {/* <Button variant="secondary" onClick={() => this.handleModalShowHide()}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={() => this.handleModalShowHide()}>
                         Save Changes
-                    </Button>
+                    </Button> */}
                     </Modal.Footer>
                 </Modal>
 
